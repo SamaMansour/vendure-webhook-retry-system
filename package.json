@@ -17,6 +17,7 @@
     "@nestjs/common": "^11.1.24",
     "@vendure/asset-server-plugin": "3.6.3",
     "@vendure/core": "3.6.3",
+    "@vendure/create": "^3.6.3",
     "@vendure/dashboard": "3.6.3",
     "@vendure/email-plugin": "3.6.3",
     "@vendure/graphiql-plugin": "3.6.3",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@vendure/cli": "3.6.3",
+    "@vendure/testing": "^3.6.3",
     "concurrently": "9.2.1",
     "ts-node": "10.9.2",
     "typescript": "5.8.2",
