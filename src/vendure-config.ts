@@ -10,6 +10,7 @@ import { AssetServerPlugin } from '@vendure/asset-server-plugin';
 import { GraphiqlPlugin } from '@vendure/graphiql-plugin';
 import { DashboardPlugin } from '@vendure/dashboard/plugin';
 import { WebhookPlugin } from './plugins/webhook-plugin/webhook.plugin';
+import { InventoryReservationPlugin } from './plugins/inventory-reservations/inventory-reservation.plugin';
 import 'dotenv/config';
 import path from 'path';
 
@@ -102,7 +103,7 @@ export const config: VendureConfig = {
                 : path.join(__dirname, 'dashboard'),
         }),
         WebhookPlugin,
+        InventoryReservationPlugin,
     ],
 };
-
 

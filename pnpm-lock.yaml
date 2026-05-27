@@ -11,9 +11,21 @@ importers:
       '@nestjs/common':
         specifier: ^11.1.24
         version: 11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/graphql':
+        specifier: ^13.4.2
+        version: 13.4.2(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)(graphql@16.14.0)(reflect-metadata@0.2.2)(ts-morph@21.0.1)
       '@nestjs/typeorm':
         specifier: ^11.0.1
         version: 11.0.1(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.20(ioredis@5.10.1)(pg@8.21.0)(sql.js@1.14.1)(ts-node@10.9.2(@types/node@25.9.1)(typescript@5.8.2)))
+      '@tanstack/react-query':
+        specifier: ^5.100.14
+        version: 5.100.14(react@19.2.6)
+      '@tanstack/react-table':
+        specifier: ^8.21.3
+        version: 8.21.3(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vendure/admin-ui-plugin':
+        specifier: ^3.6.3
+        version: 3.6.3(express@5.2.1)
       '@vendure/asset-server-plugin':
         specifier: 3.6.3
         version: 3.6.3
@@ -44,18 +56,36 @@ importers:
       express:
         specifier: ^5.2.1
         version: 5.2.1
+      gql.tada:
+        specifier: ^1.9.2
+        version: 1.9.2(graphql@16.14.0)(typescript@5.8.2)
+      graphql-tag:
+        specifier: ^2.12.6
+        version: 2.12.6(graphql@16.14.0)
       ioredis:
         specifier: ^5.10.1
         version: 5.10.1
+      lucide-react:
+        specifier: ^1.16.0
+        version: 1.16.0(react@19.2.6)
       pg:
         specifier: 8.21.0
         version: 8.21.0
+      react:
+        specifier: ^19.2.6
+        version: 19.2.6
+      react-dom:
+        specifier: ^19.2.6
+        version: 19.2.6(react@19.2.6)
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
       typeorm:
         specifier: 0.3.20
         version: 0.3.20(ioredis@5.10.1)(pg@8.21.0)(sql.js@1.14.1)(ts-node@10.9.2(@types/node@25.9.1)(typescript@5.8.2))
+      vdb-js:
+        specifier: ^0.0.5
+        version: 0.0.5
     devDependencies:
       '@vendure/cli':
         specifier: 3.6.3
@@ -1407,12 +1437,46 @@ packages:
       ts-morph:
         optional: true
 
+  '@nestjs/graphql@13.4.2':
+    resolution: {integrity: sha512-MIaMIaV9o3Tj2LsoGGwhISTZVXEIfDK8rDXplE3tSYULj6cXSY1dofOSLMF/aY+BZLwlrN4BUUowgu8qNdDZFg==}
+    peerDependencies:
+      '@apollo/subgraph': ^2.9.3
+      '@nestjs/common': ^11.0.1
+      '@nestjs/core': ^11.0.1
+      class-transformer: '*'
+      class-validator: '*'
+      graphql: ^16.11.0
+      reflect-metadata: ^0.1.13 || ^0.2.0
+      ts-morph: ^20.0.0 || ^21.0.0 || ^24.0.0 || ^25.0.0 || ^26.0.0 || ^27.0.0 || ^28.0.0
+    peerDependenciesMeta:
+      '@apollo/subgraph':
+        optional: true
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+      ts-morph:
+        optional: true
+
   '@nestjs/mapped-types@2.1.0':
     resolution: {integrity: sha512-W+n+rM69XsFdwORF11UqJahn4J3xi4g/ZEOlJNL6KoW5ygWSmBB2p0S2BZ4FQeS/NDH72e6xIcu35SfJnE8bXw==}
     peerDependencies:
       '@nestjs/common': ^10.0.0 || ^11.0.0
       class-transformer: ^0.4.0 || ^0.5.0
       class-validator: ^0.13.0 || ^0.14.0
+      reflect-metadata: ^0.1.12 || ^0.2.0
+    peerDependenciesMeta:
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+
+  '@nestjs/mapped-types@2.1.1':
+    resolution: {integrity: sha512-SCCoMEJ6jdeI5h/N+KCVF1+pmg/hmEkNA5nHTS8Gvww7T/LCl4o1gFLinw2iQ60w7slFkszHcGLKGdazVI4F8A==}
+    peerDependencies:
+      '@nestjs/common': ^10.0.0 || ^11.0.0
+      class-transformer: ^0.4.0 || ^0.5.0
+      class-validator: ^0.13.0 || ^0.14.0 || ^0.15.0
       reflect-metadata: ^0.1.12 || ^0.2.0
     peerDependenciesMeta:
       class-transformer:
@@ -2646,6 +2710,9 @@ packages:
         optional: true
       react-hook-form:
         optional: true
+
+  '@vendure/admin-ui-plugin@3.6.3':
+    resolution: {integrity: sha512-Rl4/8uhHku3XPWGzPkrLREpbuq8i49vRr5BdNjUms/T6hSyval91RZK40nX+W4JoG0Kmjv3LkgHe6gmWDt8Bfw==}
 
   '@vendure/asset-server-plugin@3.6.3':
     resolution: {integrity: sha512-8W8jTaB6RJm0tsvbn23WudVpZEdTKb/Bq5mc0R+5dM85AyiBcSXl7P2Pdi7F0Q/+mmCgGmA0Zximy/JPILZ+aA==}
@@ -3942,6 +4009,22 @@ packages:
       ws:
         optional: true
 
+  graphql-ws@6.0.8:
+    resolution: {integrity: sha512-m3EOaNsUBXwAnkBWbzPfe0Nq8pXUfxsWnolC54sru3FzHvhTZL0Ouf/BoQsaGAXqM+YPerXOJ47BUnmgmoupCw==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      '@fastify/websocket': ^10 || ^11
+      crossws: ~0.3
+      graphql: ^15.10.1 || ^16
+      ws: ^8
+    peerDependenciesMeta:
+      '@fastify/websocket':
+        optional: true
+      crossws:
+        optional: true
+      ws:
+        optional: true
+
   graphql@16.11.0:
     resolution: {integrity: sha512-mS1lbMsxgQj6hge1XZ6p7GPhbrtFwUFYi3wRzXAC/FmYnyXMTvvI3td3rjmQ2u8ewXueaSvRPWaEcgVVOT9Jnw==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
@@ -4507,6 +4590,11 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
+  lucide-react@1.16.0:
+    resolution: {integrity: sha512-dYwyPzb4MEKpGUmNYk3WKWPnMrHs3FKM+q94kAnJrcDIqqn1hq2xY8scaS2ovsOCM5D51ey2gaRG3PBb1vgoYQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   luxon@3.7.2:
     resolution: {integrity: sha512-vtEhXh/gNjI9Yg1u4jX/0YVPMvxzHuGgCm6tC5kZyb08yjGWGnqAjGJvcXbqQR2P3MyMEFnRbpcdFS6PBcLqew==}
     engines: {node: '>=12'}
@@ -4716,6 +4804,9 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  mnemonist@0.34.0:
+    resolution: {integrity: sha512-eKQxmumFOJhd7ea/u8zVvj7gA2tD6QFkuDfUIvoT/VIq+yR1VzXpp0tM8QFgeSRig5brIN/3NUE72/wvvyc9ug==}
+
   moo@0.5.3:
     resolution: {integrity: sha512-m2fmM2dDm7GZQsY7KK2cme8agi+AAljILjQnof7p1ZMDe6dQ4bdnSMx0cPppudoeNv5hEFQirN6u+O4fDE0IWA==}
 
@@ -4887,6 +4978,9 @@ packages:
   object-treeify@1.1.33:
     resolution: {integrity: sha512-EFVjAYfzWqWsBMRHPMAXLCDIJnpMhdWAqR7xG6M6a2cs6PMFpl/+Z20w9zDW4vkxOFfddegBKq9Rehd0bxWE7A==}
     engines: {node: '>= 10'}
+
+  obliterator@1.6.1:
+    resolution: {integrity: sha512-9WXswnqINnnhOG/5SLimUlzuU1hFJUc8zkwyD59Sd+dPOMf05PmnYG/d6Q7HZ+KmgkZJa1PxRso6QdM3sTNHig==}
 
   observable-fns@0.6.1:
     resolution: {integrity: sha512-9gRK4+sRWzeN6AOewNBTLXir7Zl/i3GB6Yl26gK4flxz8BXVpD3kt8amREmWNb0mxYOGDotvE5a4N+PtGGKdkg==}
@@ -5770,6 +5864,9 @@ packages:
     resolution: {integrity: sha512-NoZ4roiN7LnbKn9QqE1amc9DJfzvZXxF4xDavcOWt1BPkdx+m+0gJuPM+S0vCe7zTJMYUP0R8pO2XMr+Y8oLIg==}
     engines: {node: '>=6'}
 
+  tslib@1.11.2:
+    resolution: {integrity: sha512-tTSkux6IGPnUGUd1XAZHcpu85MOkIl5zX49pO+jfsie3eP0B6pyhOlLXm3cAC6T7s+euSDDUUV+Acop5WmtkVg==}
+
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -6044,6 +6141,9 @@ packages:
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
 
+  vdb-js@0.0.5:
+    resolution: {integrity: sha512-COmjxpM3gEiW7DZMcxaPUVMSpWERk01nVrPSY1VocnI2ZLD2sIOzAht2jVzOu30GuL3XUyj2Ea9VFDDjOD1lEw==}
+
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
 
@@ -6217,6 +6317,18 @@ packages:
       utf-8-validate:
         optional: true
 
+  ws@8.20.1:
+    resolution: {integrity: sha512-It4dO0K5v//JtTXuPkfEOaI3uUN87iYPnqo/ZzqCoG3g8uhA66QUMs/SrM0YK7/NAu+r4LMh/9dq2A7k+rHs+w==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   wsl-utils@0.1.0:
     resolution: {integrity: sha512-h3Fbisa2nKGPxCpm89Hk33lBLsnaGBvctQopaBSOW/uIs6FTe1ATyAnKFJrzVs9vpGdsTe73WF3V4lIsk4Gacw==}
     engines: {node: '>=18'}
@@ -6294,10 +6406,20 @@ snapshots:
     optionalDependencies:
       graphql: 16.11.0
 
+  '@0no-co/graphql.web@1.2.0(graphql@16.14.0)':
+    optionalDependencies:
+      graphql: 16.14.0
+
   '@0no-co/graphqlsp@1.15.4(graphql@16.11.0)(typescript@5.8.2)':
     dependencies:
       '@gql.tada/internal': 1.0.9(graphql@16.11.0)(typescript@5.8.2)
       graphql: 16.11.0
+      typescript: 5.8.2
+
+  '@0no-co/graphqlsp@1.15.4(graphql@16.14.0)(typescript@5.8.2)':
+    dependencies:
+      '@gql.tada/internal': 1.0.9(graphql@16.14.0)(typescript@5.8.2)
+      graphql: 16.14.0
       typescript: 5.8.2
 
   '@antfu/ni@25.0.0':
@@ -6336,10 +6458,10 @@ snapshots:
 
   '@apollo/server-plugin-landing-page-graphql-playground@4.0.1(@apollo/server@4.13.0(graphql@16.11.0))':
     dependencies:
-      '@apollo/server': 4.13.0(graphql@16.11.0)
+      '@apollo/server': 4.13.0(graphql@16.14.0)
       '@apollographql/graphql-playground-html': 1.6.29
 
-  '@apollo/server@4.13.0(graphql@16.11.0)':
+  '@apollo/server@4.13.0(graphql@16.14.0)':
     dependencies:
       '@apollo/cache-control-types': 1.0.3(graphql@16.11.0)
       '@apollo/server-gateway-interface': 1.1.1(graphql@16.11.0)
@@ -6359,7 +6481,7 @@ snapshots:
       content-type: 1.0.5
       cors: 2.8.6
       express: 4.22.2
-      graphql: 16.11.0
+      graphql: 16.14.0
       loglevel: 1.9.2
       lru-cache: 7.18.3
       negotiator: 0.6.4
@@ -7023,17 +7145,30 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@gql.tada/cli-utils@1.7.3(@0no-co/graphqlsp@1.15.4(graphql@16.11.0)(typescript@5.8.2))(graphql@16.11.0)(typescript@5.8.2)':
+  '@gql.tada/cli-utils@1.7.3(@0no-co/graphqlsp@1.15.4(graphql@16.14.0)(typescript@5.8.2))(graphql@16.11.0)(typescript@5.8.2)':
     dependencies:
-      '@0no-co/graphqlsp': 1.15.4(graphql@16.11.0)(typescript@5.8.2)
+      '@0no-co/graphqlsp': 1.15.4(graphql@16.14.0)(typescript@5.8.2)
       '@gql.tada/internal': 1.0.9(graphql@16.11.0)(typescript@5.8.2)
       graphql: 16.11.0
+      typescript: 5.8.2
+
+  '@gql.tada/cli-utils@1.7.3(@0no-co/graphqlsp@1.15.4(graphql@16.14.0)(typescript@5.8.2))(graphql@16.14.0)(typescript@5.8.2)':
+    dependencies:
+      '@0no-co/graphqlsp': 1.15.4(graphql@16.14.0)(typescript@5.8.2)
+      '@gql.tada/internal': 1.0.9(graphql@16.14.0)(typescript@5.8.2)
+      graphql: 16.14.0
       typescript: 5.8.2
 
   '@gql.tada/internal@1.0.9(graphql@16.11.0)(typescript@5.8.2)':
     dependencies:
       '@0no-co/graphql.web': 1.2.0(graphql@16.11.0)
       graphql: 16.11.0
+      typescript: 5.8.2
+
+  '@gql.tada/internal@1.0.9(graphql@16.14.0)(typescript@5.8.2)':
+    dependencies:
+      '@0no-co/graphql.web': 1.2.0(graphql@16.14.0)
+      graphql: 16.14.0
       typescript: 5.8.2
 
   '@graphql-tools/batch-delegate@10.0.22(graphql@16.11.0)':
@@ -7093,9 +7228,15 @@ snapshots:
       graphql: 16.11.0
       tslib: 2.8.1
 
+  '@graphql-tools/merge@9.1.9(graphql@16.14.0)':
+    dependencies:
+      '@graphql-tools/utils': 11.1.0(graphql@16.14.0)
+      graphql: 16.14.0
+      tslib: 2.8.1
+
   '@graphql-tools/schema@10.0.23(graphql@16.11.0)':
     dependencies:
-      '@graphql-tools/merge': 9.0.24(graphql@16.11.0)
+      '@graphql-tools/merge': 9.1.9(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       graphql: 16.11.0
       tslib: 2.8.1
@@ -7105,6 +7246,13 @@ snapshots:
       '@graphql-tools/merge': 9.1.9(graphql@16.11.0)
       '@graphql-tools/utils': 11.1.0(graphql@16.11.0)
       graphql: 16.11.0
+      tslib: 2.8.1
+
+  '@graphql-tools/schema@10.0.33(graphql@16.14.0)':
+    dependencies:
+      '@graphql-tools/merge': 9.1.9(graphql@16.14.0)
+      '@graphql-tools/utils': 11.1.0(graphql@16.14.0)
+      graphql: 16.14.0
       tslib: 2.8.1
 
   '@graphql-tools/schema@9.0.19(graphql@16.11.0)':
@@ -7145,6 +7293,14 @@ snapshots:
       graphql: 16.11.0
       tslib: 2.8.1
 
+  '@graphql-tools/utils@11.1.0(graphql@16.14.0)':
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.14.0)
+      '@whatwg-node/promise-helpers': 1.3.2
+      cross-inspect: 1.0.1
+      graphql: 16.14.0
+      tslib: 2.8.1
+
   '@graphql-tools/utils@9.2.1(graphql@16.11.0)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.11.0)
@@ -7163,6 +7319,10 @@ snapshots:
   '@graphql-typed-document-node/core@3.2.0(graphql@16.11.0)':
     dependencies:
       graphql: 16.11.0
+
+  '@graphql-typed-document-node/core@3.2.0(graphql@16.14.0)':
+    dependencies:
+      graphql: 16.14.0
 
   '@hono/node-server@1.19.14(hono@4.12.23)':
     dependencies:
@@ -7527,7 +7687,7 @@ snapshots:
 
   '@nestjs/apollo@13.1.0(@apollo/server@4.13.0(graphql@16.11.0))(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)(@nestjs/graphql@13.1.0(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)(graphql@16.11.0)(reflect-metadata@0.2.2)(ts-morph@21.0.1))(graphql@16.11.0)':
     dependencies:
-      '@apollo/server': 4.13.0(graphql@16.11.0)
+      '@apollo/server': 4.13.0(graphql@16.14.0)
       '@apollo/server-plugin-landing-page-graphql-playground': 4.0.1(@apollo/server@4.13.0(graphql@16.11.0))
       '@nestjs/common': 11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.1.24(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.24)(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -7590,7 +7750,39 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
+  '@nestjs/graphql@13.4.2(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)(graphql@16.14.0)(reflect-metadata@0.2.2)(ts-morph@21.0.1)':
+    dependencies:
+      '@graphql-tools/merge': 9.1.9(graphql@16.14.0)
+      '@graphql-tools/schema': 10.0.33(graphql@16.14.0)
+      '@graphql-tools/utils': 11.1.0(graphql@16.14.0)
+      '@nestjs/common': 11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.1.24(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.24)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/mapped-types': 2.1.1(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)
+      chokidar: 4.0.3
+      fast-glob: 3.3.3
+      graphql: 16.14.0
+      graphql-tag: 2.12.6(graphql@16.14.0)
+      graphql-ws: 6.0.8(graphql@16.14.0)(ws@8.20.1)
+      lodash: 4.18.1
+      normalize-path: 3.0.0
+      reflect-metadata: 0.2.2
+      subscriptions-transport-ws: 0.11.0(graphql@16.14.0)
+      tslib: 2.8.1
+      ws: 8.20.1
+    optionalDependencies:
+      ts-morph: 21.0.1
+    transitivePeerDependencies:
+      - '@fastify/websocket'
+      - bufferutil
+      - crossws
+      - utf-8-validate
+
   '@nestjs/mapped-types@2.1.0(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)':
+    dependencies:
+      '@nestjs/common': 11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      reflect-metadata: 0.2.2
+
+  '@nestjs/mapped-types@2.1.1(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)':
     dependencies:
       '@nestjs/common': 11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2)
       reflect-metadata: 0.2.2
@@ -8697,6 +8889,14 @@ snapshots:
       - supports-color
       - typescript
 
+  '@vendure/admin-ui-plugin@3.6.3(express@5.2.1)':
+    dependencies:
+      date-fns: 4.3.0
+      express-rate-limit: 7.5.1(express@5.2.1)
+      fs-extra: 11.3.5
+    transitivePeerDependencies:
+      - express
+
   '@vendure/asset-server-plugin@3.6.3':
     dependencies:
       file-type: 19.6.0
@@ -8726,7 +8926,7 @@ snapshots:
 
   '@vendure/core@3.6.3(@types/express@4.17.25)(ioredis@5.10.1)(pg@8.21.0)(sql.js@1.14.1)(ts-morph@21.0.1)(ts-node@10.9.2(@types/node@25.9.1)(typescript@5.8.2))(typescript@5.8.2)':
     dependencies:
-      '@apollo/server': 4.13.0(graphql@16.11.0)
+      '@apollo/server': 4.13.0(graphql@16.14.0)
       '@graphql-tools/stitch': 10.1.19(graphql@16.11.0)
       '@nestjs/apollo': 13.1.0(@apollo/server@4.13.0(graphql@16.11.0))(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)(@nestjs/graphql@13.1.0(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)(graphql@16.11.0)(reflect-metadata@0.2.2)(ts-morph@21.0.1))(graphql@16.11.0)
       '@nestjs/common': 11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -10313,8 +10513,20 @@ snapshots:
     dependencies:
       '@0no-co/graphql.web': 1.2.0(graphql@16.11.0)
       '@0no-co/graphqlsp': 1.15.4(graphql@16.11.0)(typescript@5.8.2)
-      '@gql.tada/cli-utils': 1.7.3(@0no-co/graphqlsp@1.15.4(graphql@16.11.0)(typescript@5.8.2))(graphql@16.11.0)(typescript@5.8.2)
+      '@gql.tada/cli-utils': 1.7.3(@0no-co/graphqlsp@1.15.4(graphql@16.14.0)(typescript@5.8.2))(graphql@16.11.0)(typescript@5.8.2)
       '@gql.tada/internal': 1.0.9(graphql@16.11.0)(typescript@5.8.2)
+      typescript: 5.8.2
+    transitivePeerDependencies:
+      - '@gql.tada/svelte-support'
+      - '@gql.tada/vue-support'
+      - graphql
+
+  gql.tada@1.9.2(graphql@16.14.0)(typescript@5.8.2):
+    dependencies:
+      '@0no-co/graphql.web': 1.2.0(graphql@16.14.0)
+      '@0no-co/graphqlsp': 1.15.4(graphql@16.14.0)(typescript@5.8.2)
+      '@gql.tada/cli-utils': 1.7.3(@0no-co/graphqlsp@1.15.4(graphql@16.14.0)(typescript@5.8.2))(graphql@16.14.0)(typescript@5.8.2)
+      '@gql.tada/internal': 1.0.9(graphql@16.14.0)(typescript@5.8.2)
       typescript: 5.8.2
     transitivePeerDependencies:
       - '@gql.tada/svelte-support'
@@ -10335,6 +10547,11 @@ snapshots:
       graphql: 16.11.0
       tslib: 2.8.1
 
+  graphql-tag@2.12.6(graphql@16.14.0):
+    dependencies:
+      graphql: 16.14.0
+      tslib: 2.8.1
+
   graphql-upload@17.0.0(@types/express@4.17.25)(graphql@16.11.0):
     dependencies:
       '@types/busboy': 1.5.4
@@ -10353,6 +10570,12 @@ snapshots:
       graphql: 16.11.0
     optionalDependencies:
       ws: 8.18.1
+
+  graphql-ws@6.0.8(graphql@16.14.0)(ws@8.20.1):
+    dependencies:
+      graphql: 16.14.0
+    optionalDependencies:
+      ws: 8.20.1
 
   graphql@16.11.0: {}
 
@@ -10839,6 +11062,10 @@ snapshots:
     dependencies:
       react: 19.2.6
 
+  lucide-react@1.16.0(react@19.2.6):
+    dependencies:
+      react: 19.2.6
+
   luxon@3.7.2: {}
 
   magic-string@0.30.21:
@@ -11207,6 +11434,10 @@ snapshots:
 
   mkdirp@3.0.1: {}
 
+  mnemonist@0.34.0:
+    dependencies:
+      obliterator: 1.6.1
+
   moo@0.5.3: {}
 
   motion-dom@12.40.0:
@@ -11364,6 +11595,8 @@ snapshots:
   object-path@0.11.8: {}
 
   object-treeify@1.1.33: {}
+
+  obliterator@1.6.1: {}
 
   observable-fns@0.6.1: {}
 
@@ -12284,6 +12517,18 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
+  subscriptions-transport-ws@0.11.0(graphql@16.14.0):
+    dependencies:
+      backo2: 1.0.2
+      eventemitter3: 3.1.2
+      graphql: 16.14.0
+      iterall: 1.3.0
+      symbol-observable: 1.2.0
+      ws: 7.5.11
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   supports-color@7.2.0:
     dependencies:
       has-flag: 4.0.0
@@ -12419,6 +12664,8 @@ snapshots:
       json5: 2.2.3
       minimist: 1.2.8
       strip-bom: 3.0.0
+
+  tslib@1.11.2: {}
 
   tslib@2.8.1: {}
 
@@ -12598,6 +12845,11 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
+  vdb-js@0.0.5:
+    dependencies:
+      mnemonist: 0.34.0
+      tslib: 1.11.2
+
   victory-vendor@36.9.2:
     dependencies:
       '@types/d3-array': 3.2.2
@@ -12715,6 +12967,8 @@ snapshots:
   ws@7.5.11: {}
 
   ws@8.18.1: {}
+
+  ws@8.20.1: {}
 
   wsl-utils@0.1.0:
     dependencies:

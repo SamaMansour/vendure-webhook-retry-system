@@ -1,21 +1,23 @@
 {
-  "compilerOptions": {
-    "composite": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
-    "paths": {
+    "compilerOptions": {
+      "composite": true,
+      "target": "ES2020",
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "jsx": "react-jsx",
+      "skipLibCheck": true,
+      "downlevelIteration": true,
+      "baseUrl": ".",
+      "paths": {
       "@/gql": [
         "./src/gql/graphql.ts"
-      ],
-      "@/vdb/*": [
-        "./node_modules/@vendure/dashboard/src/lib/*"
       ]
     }
   },
-  "include": [
-    "src/plugins/**/dashboard/*",
-    "src/gql/**/*.ts",
-    "vite.*.*ts"
-  ]
-}
+    "include": [
+      "src/plugins/**/dashboard/*",
+      "src/gql/**/*.ts",
+      "vite.*.*ts",
+      "node_modules/@vendure/dashboard/src/lib/virtual.d.ts"
+    ]
+  }

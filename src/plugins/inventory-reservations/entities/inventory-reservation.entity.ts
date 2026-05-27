@@ -1,31 +1,38 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { DeepPartial, VendureEntity } from '@vendure/core';
+import { Column, Entity, Index } from 'typeorm';
+
+export type InventoryReservationStatus = 'ACTIVE' | 'EXPIRED' | 'COMPLETED';
 
 @Entity()
-export class InventoryReservation {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class InventoryReservation extends VendureEntity {
+    constructor(input?: DeepPartial<InventoryReservation>) {
+        super(input);
+    }
 
-  @Column()
-  productVariantId: number;
+    @Index()
+    @Column()
+    orderId: number;
 
-  @Column()
-  quantity: number;
+    @Column()
+    orderCode: string;
 
-  @Column()
-  expiresAt: Date;
+    @Index()
+    @Column()
+    productVariantId: number;
 
-  @Column()
-  status: 'active' | 'expired' | 'completed' | 'released';
+    @Column()
+    productVariantName: string;
 
-  @Column()
-  createdAt: Date;
+    @Column()
+    quantity: number;
 
-  @Column()
-  updatedAt: Date;
+    @Column()
+    expiresAt: Date;
 
-
+    @Index()
+    @Column({
+        type: 'varchar',
+        default: 'ACTIVE',
+    })
+    status: InventoryReservationStatus;
 }

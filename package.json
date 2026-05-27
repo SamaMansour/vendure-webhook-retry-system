@@ -15,7 +15,11 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.1.24",
+    "@nestjs/graphql": "^13.4.2",
     "@nestjs/typeorm": "^11.0.1",
+    "@tanstack/react-query": "^5.100.14",
+    "@tanstack/react-table": "^8.21.3",
+    "@vendure/admin-ui-plugin": "^3.6.3",
     "@vendure/asset-server-plugin": "3.6.3",
     "@vendure/core": "3.6.3",
     "@vendure/create": "^3.6.3",
@@ -26,10 +30,16 @@
     "bullmq": "^5.77.3",
     "dotenv": "17.4.2",
     "express": "^5.2.1",
+    "gql.tada": "^1.9.2",
+    "graphql-tag": "^2.12.6",
     "ioredis": "^5.10.1",
+    "lucide-react": "^1.16.0",
     "pg": "8.21.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "reflect-metadata": "^0.2.2",
-    "typeorm": "0.3.20"
+    "typeorm": "0.3.20",
+    "vdb-js": "^0.0.5"
   },
   "devDependencies": {
     "@vendure/cli": "3.6.3",
