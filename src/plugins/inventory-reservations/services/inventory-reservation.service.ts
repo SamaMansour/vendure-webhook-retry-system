@@ -32,6 +32,15 @@ export class InventoryReservationService {
 
     async reserveStock(input: ReserveStockInput): Promise<InventoryReservation> {
         const ttlMs = input.ttlMs ?? 15 * 60 * 1000;
+        const reservationData = {
+            orderId: input.orderId,
+            orderCode: input.orderCode,
+            productVariantId: input.productVariantId,
+            productVariantName: input.productVariantName,
+            quantity: input.quantity,
+            expiresAt: new Date(Date.now() + ttlMs),
+            status: 'ACTIVE' as const,
+        };
 
         return this.connection.withTransaction(input.ctx, async ctx => {
             const stockRepo = this.connection.getRepository(ctx, StockLevel);
@@ -69,17 +78,7 @@ export class InventoryReservationService {
                 );
             }
 
-            return reservationRepo.save(
-                new InventoryReservation({
-                    orderId: input.orderId,
-                    orderCode: input.orderCode,
-                    productVariantId: input.productVariantId,
-                    productVariantName: input.productVariantName,
-                    quantity: input.quantity,
-                    expiresAt: new Date(Date.now() + ttlMs),
-                    status: 'ACTIVE',
-                }),
-            );
+            return reservationRepo.save(reservationRepo.create(reservationData));
         });
     }
 

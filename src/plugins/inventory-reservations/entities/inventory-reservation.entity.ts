@@ -1,7 +1,7 @@
 import { DeepPartial, VendureEntity } from '@vendure/core';
 import { Column, Entity, Index } from 'typeorm';
 
-export type InventoryReservationStatus = 'ACTIVE' | 'EXPIRED' | 'COMPLETED';
+export type InventoryReservationStatus = 'ACTIVE' | 'EXPIRED' | 'COMPLETED' | 'CANCELLED';
 
 @Entity()
 export class InventoryReservation extends VendureEntity {

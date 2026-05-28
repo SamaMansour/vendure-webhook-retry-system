@@ -19,7 +19,7 @@ export class OrderSubscriber implements OnModuleInit {
         for (const line of event.order.lines) {
           const reservation = await this.inventoryReservationService.reserveStock({
             ctx: event.ctx,
-            orderId: Number(event.order.id),
+            orderId: Number(event.order.id.toString()),
             orderCode: event.order.code,
             productVariantId: Number(line.productVariant.id),
             productVariantName: line.productVariant.name,
