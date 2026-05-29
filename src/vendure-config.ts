@@ -13,6 +13,7 @@ import { WebhookPlugin } from './plugins/webhook-plugin/webhook.plugin';
 import { InventoryReservationPlugin } from './plugins/inventory-reservations/inventory-reservation.plugin';
 import 'dotenv/config';
 import path from 'path';
+import { NotificationPlugin } from './plugins/notificatiions/notifications.plugin';
 
 const IS_DEV = process.env.APP_ENV === 'dev';
 const serverPort = +process.env.PORT || 3000;
@@ -104,6 +105,7 @@ export const config: VendureConfig = {
         }),
         WebhookPlugin,
         InventoryReservationPlugin,
+        NotificationPlugin,
     ],
 };
 
