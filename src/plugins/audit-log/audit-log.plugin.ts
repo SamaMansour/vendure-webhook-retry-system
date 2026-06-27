@@ -8,6 +8,7 @@ import { PaymentSubscriber } from './subscribers/payment.subscriber';
 import { StockSubscriber } from './subscribers/stock.subscriber';
 import { adminApiExtensions } from './api/api-extensions';
 import { AuditLogResolver } from './api/audit-log.resolver';
+import { AuditLogController } from './api/audit-log.controller';
 
 @VendurePlugin({
     imports: [PluginCommonModule],
@@ -16,6 +17,7 @@ import { AuditLogResolver } from './api/audit-log.resolver';
         schema: adminApiExtensions as any,
         resolvers: [AuditLogResolver],
     },
+    controllers: [AuditLogController],
     providers: [
         AuditLogService,
         AuditLogResolver,
