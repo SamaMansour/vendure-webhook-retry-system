@@ -1,26 +1,30 @@
 import { VendurePlugin, PluginCommonModule } from '@vendure/core';
 import { Module } from '@nestjs/common';
 import { OrderSubscriber } from './subscribers/order.subscriber';
+import { AuditLog } from './entities/audit-log.entity';
 import { AuditLogService } from './services/audit-log.service';
-import { InventoryReleaseQueueHandler } from '../inventory-reservations/queues/inventory.queue';
-import { InventoryReservationService } from '../inventory-reservations/services/inventory-reservation.service';
-import { adminApiExtensions } from '../inventory-reservations/api/api-extensions';
-import { InventoryReservationResolver } from '../inventory-reservations/api/inventory-reservation.resolver';
-import { InventoryReservation } from '../inventory-reservations/entities/inventory-reservation.entity';
+import { ProductSubscriber } from './subscribers/product.subscriber';
+import { PaymentSubscriber } from './subscribers/payment.subscriber';
+import { StockSubscriber } from './subscribers/stock.subscriber';
+import { adminApiExtensions } from './api/api-extensions';
+import { AuditLogResolver } from './api/audit-log.resolver';
+
 @VendurePlugin({
     imports: [PluginCommonModule],
-    entities: [InventoryReservation],
+    entities: [AuditLog],
     adminApiExtensions: {
         schema: adminApiExtensions as any,
-        resolvers: [InventoryReservationResolver],
+        resolvers: [AuditLogResolver],
     },
     providers: [
-        InventoryReservationService,
-        InventoryReservationResolver,
-        InventoryReleaseQueueHandler,
+        AuditLogService,
+        AuditLogResolver,
         OrderSubscriber,
+        ProductSubscriber,
+        PaymentSubscriber,
+        StockSubscriber,
     ],
     dashboard: './dashboard/index.tsx',
 })
 @Module({})
-export class InventoryReservationPlugin {}
+export class AuditLogPlugin {}

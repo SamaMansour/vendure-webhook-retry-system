@@ -3,6 +3,10 @@ import { Column, Entity, Index } from 'typeorm';
 
 @Entity()
 export class AuditLog extends VendureEntity {
+    constructor(input?: DeepPartial<AuditLog>) {
+        super(input);
+    }
+
     @Column()
     userId: string;
 
