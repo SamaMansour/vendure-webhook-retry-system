@@ -7,31 +7,39 @@ export class AuditLog extends VendureEntity {
         super(input);
     }
 
-    @Column()
+    @Index()
+    @Column({ name: 'user_id' })
     userId: string;
 
-    @Column()
+    @Index()
+    @Column({ name: 'action_type' })
     actionType: string;
 
-    @Column()
+    @Index()
+    @Column({ name: 'entity_type' })
     entityType: string;
 
-    @Column()
+    @Index()
+    @Column({ name: 'entity_id' })
     entityId: string;
 
-   @Column({
-    type: 'jsonb',
-    nullable: true,
-})
-oldValue: Record<string, any> | null;
-
-@Column({
-    type: 'jsonb',
-    nullable: true,
-})
-newValue: Record<string, any> | null;
     @Column({
+        name: 'old_value',
+        type: 'jsonb',
         nullable: true,
     })
-    ipAddress: string;
+    oldValue: Record<string, any> | null;
+
+    @Column({
+        name: 'new_value',
+        type: 'jsonb',
+        nullable: true,
+    })
+    newValue: Record<string, any> | null;
+
+    @Column({
+        name: 'ip_address',
+        nullable: true,
+    })
+    ipAddress: string | null;
 }

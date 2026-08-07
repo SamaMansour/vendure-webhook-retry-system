@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, FindOptionsWhere, Like, Between, DeepPartial } from 'typeorm';
+import { TransactionalConnection } from '@vendure/core';
 import { AuditLog } from '../entities/audit-log.entity';
 
 export interface CreateAuditLogInput {
@@ -26,13 +25,11 @@ export interface AuditLogFilters {
 
 @Injectable()
 export class AuditLogService {
-    constructor(
-        @InjectRepository(AuditLog)
-        private readonly auditLogRepository: Repository<AuditLog>,
-    ) {}
+    constructor(private readonly connection: TransactionalConnection) {}
 
  async createLog(input: CreateAuditLogInput): Promise<AuditLog> {
-  const logPayload: DeepPartial<AuditLog> = {
+  const auditLogRepository = this.connection.rawConnection.getRepository(AuditLog);
+  const logPayload = {
     userId: input.userId ?? 'system',
     actionType: input.actionType,
     entityType: input.entityType,
@@ -42,45 +39,51 @@ export class AuditLogService {
     ipAddress: input.ipAddress,
   };
 
-  const log = this.auditLogRepository.create(logPayload);
-  return this.auditLogRepository.save(log);
+  const log = auditLogRepository.create(logPayload);
+  return auditLogRepository.save(log);
 }
 
 async findAll(filters: AuditLogFilters) {
-    const where: FindOptionsWhere<AuditLog> = {};
+    const auditLogRepository = this.connection.rawConnection.getRepository(AuditLog);
+    const queryBuilder = auditLogRepository.createQueryBuilder('auditLog');
 
     if (filters.actionType) {
-        where.actionType = filters.actionType;
+        queryBuilder.andWhere('auditLog.actionType = :actionType', {
+            actionType: filters.actionType,
+        });
     }
 
     if (filters.entityType) {
-        where.entityType = filters.entityType;
+        queryBuilder.andWhere('auditLog.entityType = :entityType', {
+            entityType: filters.entityType,
+        });
     }
 
         if (filters.entityId) {
-            where.entityId = Like(`%${filters.entityId}%`);
+            queryBuilder.andWhere('auditLog.entityId LIKE :entityId', {
+                entityId: `%${filters.entityId}%`,
+            });
         }
 
         if (filters.userId) {
-            where.userId = filters.userId;
+            queryBuilder.andWhere('auditLog.userId = :userId', {
+                userId: filters.userId,
+            });
         }
 
         if (filters.fromDate && filters.toDate) {
-            where.createdAt = Between(
-                filters.fromDate,
-                filters.toDate,
-            );
+            queryBuilder.andWhere('auditLog.createdAt BETWEEN :fromDate AND :toDate', {
+                fromDate: filters.fromDate,
+                toDate: filters.toDate,
+            });
         }
 
         const [items, totalItems] =
-            await this.auditLogRepository.findAndCount({
-                where,
-                order: {
-                    createdAt: 'DESC',
-                },
-                skip: filters.skip ?? 0,
-                take: filters.take ?? 25,
-            });
+            await queryBuilder
+                .orderBy('auditLog.createdAt', 'DESC')
+                .skip(filters.skip ?? 0)
+                .take(filters.take ?? 25)
+                .getManyAndCount();
 
         return {
             items,
@@ -89,7 +92,7 @@ async findAll(filters: AuditLogFilters) {
     }
 
     async findOne(id: number): Promise<AuditLog | null> {
-        return this.auditLogRepository.findOne({
+        return this.connection.rawConnection.getRepository(AuditLog).findOne({
             where: { id },
         });
     }
